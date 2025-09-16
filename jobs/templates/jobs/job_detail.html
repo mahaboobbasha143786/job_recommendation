@@ -1,0 +1,35 @@
+{% extends 'jobs/base.html' %}
+
+{% block title %}{{ job.title }} | JobPortal{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="card shadow-lg p-4 rounded-4">
+    <h2 class="fw-bold mb-3">{{ job.title }}</h2>
+    <h5 class="text-muted mb-3">{{ job.company }} - {{ job.location }}</h5>
+
+    <div class="mb-3">
+      <h6 class="fw-semibold">Job Description:</h6>
+      <p>{{ job.description }}</p>
+    </div>
+
+    <div class="mb-3">
+      <h6 class="fw-semibold">Skills Required:</h6>
+      <p>{{ job.skills_required }}</p>
+    </div>
+
+    {% if job.salary %}
+    <div class="mb-3">
+      <h6 class="fw-semibold">Salary:</h6>
+      <p>{{ job.salary }} LPA</p>
+    </div>
+    {% endif %}
+
+    <div class="mb-3">
+      <a href="{{ job.apply_link }}" target="_blank" class="btn btn-primary me-2">Apply Now</a>
+    <div class="mt-4">
+      <a href="{% url 'index' %}" class="btn btn-outline-secondary">Back to Jobs</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

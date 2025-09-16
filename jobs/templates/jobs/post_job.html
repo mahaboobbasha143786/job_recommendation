@@ -1,0 +1,25 @@
+{% extends 'jobs/base.html' %}
+{% load widget_tweaks %}
+
+
+{% block title %}Post Job | JobPortal{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center mb-5">
+  <div class="card shadow-lg p-5 w-100" style="max-width: 700px;">
+    <h3 class="text-center mb-4 fw-bold">Post a New Job</h3>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      {% for field in form %}
+        <div class="mb-3">
+          <label for="{{ field.id_for_label }}" class="form-label fw-semibold">{{ field.label }}</label>
+          {{ field|add_class:"form-control" }}
+          {{ field.errors }}
+        </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-primary w-100 fw-bold" style="background: linear-gradient(90deg,#007bff,#6610f2); border:none;">Post Job</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
